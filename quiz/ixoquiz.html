@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en"><head><style>@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ixoQuiz | infoXodia GK and QUIZ</title>
+    <meta name="description" content="Let deep-dive into amazing general knowledge and quiz content of odisha culture, tradition, festival, art and more">
+    <!-- <base href="/"> -->
+
+    <!-- Open Graph meta tags -->
+    <meta property="og:title" content="ixoQuiz | infoXodia GK and QUIZ">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="http://127.0.0.1:5500/#/quiz">
+    <meta property="og:image" content="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1738482659/odisha-infoxodia-category-infoxodia.webp">
+    <meta property="og:description" content="Let deep-dive into amazing general knowledge and quiz content of odisha culture, tradition, festival, art and more">
+
+    <!-- Link to the favicon -->
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon">
+    
+
+    <script src="thirdparty/jquery/jquery-3.6.0.min.js"></script>
+
+    <!-- load bootstrap files  -->
+     <script src="thirdparty/bootstrap/js/bootstrap.bundle.min.js"></script>
+     <link rel="stylesheet" href="thirdparty/bootstrap/css/bootstrap.min.css">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+     <!-- loading custom design  -->
+      <link rel="stylesheet" href="thirdparty/custom/custom-theme.css">
+    <!-- Load angular app -->
+    <script src="app.js"></script>
+
+    <!-- load service -->
+     <script type="module" src="services/firebaseConfig.js"></script>
+     <script src="services/appCallService.js"></script>
+     <script src="services/dataTransfer.js"></script>
+     <script src="services/setAppMetaData.js"></script>
+
+    <!-- Load Controllers -->
+     <!-- <script src="controllers/loginController.js"></script> -->
+     <script src="controllers/dashboardController.js"></script>
+     <script src="controllers/SitemapController.js"></script>
+     <script src="controllers/quiz/ixoquizController.js"></script>
+     <script src="controllers/quiz/post/postController.js"></script>
+     <script src="controllers/quiz/category/categoryController.js"></script>
+     <script src="controllers/pages/contactUsController.js"></script>
+     <script src="controllers/pages/aboutUsController.js"></script>
+
+     <!-- load template controllers  -->
+      <script src="controllers/TemplateControllers/DashboardContentController.js"></script>
+      <script src="controllers/TemplateControllers/ManageContentController.js"></script>
+
+     <!-- load directive -->
+      <script src="directives/templatesDirective.js"></script>
+      <script src="directives/quizTemplateDirective.js"></script>
+
+     <!-- load css files  -->
+     <link rel="stylesheet" href="styles/quiz/ixoquizpoststyle.css">
+     <link rel="stylesheet" href="styles/dashboard.css">
+     <link rel="stylesheet" href="styles/login.css">
+     <link rel="stylesheet" href="styles/quiz/ixoquizstyle.css">
+     <link rel="stylesheet" href="styles/general.css">
+
+<link rel="canonical" href="http://127.0.0.1:5500/#/quiz"><script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"ixoQuiz | infoXodia GK and QUIZ","url":"http://127.0.0.1:5500/#/quiz","description":"Let deep-dive into amazing general knowledge and quiz content of odisha culture, tradition, festival, art and more"}</script></head>
+
+<body ng-app="ixoUI" ng-controller="appController" class="ng-scope" data-new-gr-c-s-check-loaded="14.1228.0" data-gr-ext-installed="">
+   <!-- ngView: --><div ng-view="" class="ng-scope"><div ng-controller="ixoquizController" class="ng-scope">
+    <nav-bar><nav id="navbar" class="navbar navbar-expand-lg bg-body-tertiary general-nav">
+
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">infoXodia</a>
+      <!-- <img class="navbar-brand img-fluid" style="height: 50px;" src="../../assets/svg/infoxodia-header-logo.svg" alt="" srcset=""> -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <!-- <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li> -->
+          
+          
+          <li class="nav-item">
+            <a class="nav-link" href="http://127.0.0.1:5500/#/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="http://127.0.0.1:5500/#/contact">Contact Us</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              IXO
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="http://127.0.0.1:5500/#/quiz">ixoQuiz</a></li>
+              <!-- <li><a class="dropdown-item" href="#"></a></li> -->
+              <!-- <li><hr class="dropdown-divider"></li> -->
+              <!-- <li><a class="dropdown-item" href="#">Something else here</a></li> -->
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex ng-pristine ng-valid" role="search" ng-submit="doSearch()">
+          <input class="form-control me-2 ng-pristine ng-untouched ng-valid ng-empty" type="search" placeholder="Search" aria-label="Search" ng-model="searchQuery">
+          <button class="btn btn-outline-primary" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav></nav-bar>
+    <scroll-txt><!-- This is the notification post scrolling in the top of website  -->
+<div class="alert alert-primary alert-dismissible fade show custom-title-scroller" role="alert">
+    <div>
+      
+        <marquee> 
+            <span class="quiz-scroll-title" ng-click="openScrollTitlePost()">Ratha Yatra Knowledge - Top 10 Quiz ! -- </span>
+            <span class="quiz-scroll-title">Know About Odisha - Explore the Culture !</span>
+        </marquee>
+        
+        
+    </div>
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div></scroll-txt>
+    <section class="py-md-8 py-6" style="background-image: url(../../assets/svg/background-glow.svg); background-repeat: no-repeat; background-size: contain">
+
+        <div class="container text-center py-4 py-md-6">
+            <div class="lc-block card border-0 text-center rounded p-4 p-lg-6" style="background:url(../../assets/svg/perspective-box.svg)  center / cover no-repeat;">
+                <div class="row card-body mb-3 mb-lg-4">
+                    <div class="col-xl-11 col-xxl-9 mx-auto">
+                        <div class="lc-block mb-4">
+                            <div editable="rich">
+                                <p class="">Welcome to ixoQuiz</p>
+                            </div>
+                        </div>
+                        <div class="lc-block">
+                            <h1 editable="inline" class="fw-bold display-6">Welcome to <span class="lc-block position-relative">ixoQuiz <img class="position-absolute top-100 start-0 mt-n1 img-fluid" src="../../assets/svg/underline2.svg" alt="img-stroke"></span>, sharpen your knowledge. <br>
+                                        Become a knowledgeable Person.</h1>
+                        </div>
+                    </div>
+                </div>
+                <!-- <div class="lc-block"><a class="btn btn-primary btn-lg" href="#" role="button">Get Started</a></div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- continer body start  -->
+    <div class="container">
+
+        <!-- category card carousel start -->
+        <div class="container">
+            <div>
+                <div class="d-flex justify-content-center">
+                    <h2 class="">-: Categories :-</h2>
+                </div>
+            </div>
+        </div>
+
+        <div id="carouselExampleControls" class="carousel slide d-flex align-item-center justify-content-center" data-bs-ride="carousel">
+            <div class="row row-cols-1 row-cols-xl-2 carousel-inner">
+                <!-- ngRepeat: ixoCategory in ixoPopularCategories --><div class="col carousel-item active" ng-repeat="ixoCategory in ixoPopularCategories">
+                    <div class="card mb-3">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img ng-src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1738482659/odisha-infoxodia-category-infoxodia.webp" class="img-fluid rounded-start" alt="odisha-infoxodia-category" src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1738482659/odisha-infoxodia-category-infoxodia.webp">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title ng-binding">- Odisha Special</h5>
+                                    <p class="card-text ng-binding">In this category of infoxodia, we will get general knowledge and quizzes about different special days and events of odisha like utkala dibasa and others. Odisha is full with amazing content, deep-dive into the field of unique gk and quiz with infoxodia</p>
+
+                                    <div class="d-flex justify-content-around">
+                                        <a class="d-inline-flex align-items-center fw-semibold icon-link icon-link-hover" ng-href="http://127.0.0.1:5500/#/quiz/odisha-special" href="http://127.0.0.1:5500/#/quiz/odisha-special">
+                                            <span>Open</span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" version="1.1" class="bi bi-arrow-right animate-bounce" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                                <path d="M5,17.59L15.59,7H9V5H19V15H17V8.41L6.41,19L5,17.59Z"></path><!-- Code injected by live-server --></svg>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end ngRepeat: ixoCategory in ixoPopularCategories -->
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <!-- <span class="carousel-control-prev-icon primary" aria-hidden="true"></span> -->
+                <i class="bi bi-arrow-left-circle-fill text-primary fs-1"></i>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <!-- <span class="carousel-control-next-icon primary" aria-hidden="true"></span> -->
+                <i class="bi bi-arrow-right-circle-fill text-primary fs-1"></i>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+        <!-- category card carousel end -->
+
+
+
+        <!-- Recent post list start-->
+        <div class="container py-2">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="lc-block">
+                        <div>
+                            <h2 class="">Recent Posts</h2>
+                            Check-out ixoQuiz's recent amazing posts
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Posts -->
+            <div class="row row-cols-2 row-cols-lg-2 g-4 g-xxl-5"><style>
+                    .border_restaurant {border-bottom: dashed var(--bs-body-color)} 
+                </style>
+                <!-- Recent post in repeat from controller  -->
+                <!-- ngRepeat: post in ixoRecentPosts --><div class="col ng-scope" ng-repeat="post in ixoRecentPosts">
+                    <!-- Post card start  -->
+                    <div class="d-grid gap-2 d-sm-flex gap-xl-4">
+                        <div class="d-flex lc-block d-sm-block flex-shrink-0 col-sm-3">
+                            <img class="rounded w-100 food_images img-fluid" ng-click="openPost($index)" ng-src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1738482659/odisha-infoxodia-category-infoxodia.webp" alt="utkala-dibasa-top-10-quiz" width="96" height="96" src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1738482659/odisha-infoxodia-category-infoxodia.webp">
+                        </div>
+                        <div class="lc-block w-100">
+                            <div class="d-flex gap-2 align-items-baseline">
+                                <div>
+                                    <a href="http://127.0.0.1:5500/#/quiz/odisha-special"> <p class="fw-bold h5 ng-binding">Utkala Dibasa</p> </a>
+                                </div>
+                                <div class="flex-grow-1 border_restaurant opacity-25"></div>
+                                <div>
+                                    <p class="ng-binding">2025-02-04</p>
+                                </div>
+                            </div>
+                            <div class="lc-block opacity-50">
+                                   <a href="http://127.0.0.1:5500/#/quiz/odisha-special/utkala-dibasa-quiz"> <span class="ng-binding">Top 10 Important GK and Quiz about Utkala Dibasa | Utkal Divas Facts</span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div><!-- end ngRepeat: post in ixoRecentPosts --><div class="col ng-scope" ng-repeat="post in ixoRecentPosts">
+                    <!-- Post card start  -->
+                    <div class="d-grid gap-2 d-sm-flex gap-xl-4">
+                        <div class="d-flex lc-block d-sm-block flex-shrink-0 col-sm-3">
+                            <img class="rounded w-100 food_images img-fluid" ng-click="openPost($index)" ng-src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1739464715/odisha-first-gk-quiz-infoxodia.webp" alt="odisha-first-gk-quiz" width="96" height="96" src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/c_fill,h_430,w_640/v1739464715/odisha-first-gk-quiz-infoxodia.webp">
+                        </div>
+                        <div class="lc-block w-100">
+                            <div class="d-flex gap-2 align-items-baseline">
+                                <div>
+                                    <a href="http://127.0.0.1:5500/#/quiz/odisha-special"> <p class="fw-bold h5 ng-binding">Odisha's First</p> </a>
+                                </div>
+                                <div class="flex-grow-1 border_restaurant opacity-25"></div>
+                                <div>
+                                    <p class="ng-binding">2025-02-13</p>
+                                </div>
+                            </div>
+                            <div class="lc-block opacity-50">
+                                   <a href="http://127.0.0.1:5500/#/quiz/odisha-special/odisha-first-gk-set1"> <span class="ng-binding">12+ Odia Gk &amp; Quiz about Odisha's First | Odisha First Person, Events and More</span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div><!-- end ngRepeat: post in ixoRecentPosts --><div class="col ng-scope" ng-repeat="post in ixoRecentPosts">
+                    <!-- Post card start  -->
+                    <div class="d-grid gap-2 d-sm-flex gap-xl-4">
+                        <div class="d-flex lc-block d-sm-block flex-shrink-0 col-sm-3">
+                            <img class="rounded w-100 food_images img-fluid" ng-click="openPost($index)" ng-src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/v1739896941/odisha-smallest-odia-gk-quiz-infoxodia.webp" alt="odisha-smallest-odia-gk-quiz" width="96" height="96" src="https://res.cloudinary.com/ddlvbiaan/image/upload/t_infoxodia-logo/v1739896941/odisha-smallest-odia-gk-quiz-infoxodia.webp">
+                        </div>
+                        <div class="lc-block w-100">
+                            <div class="d-flex gap-2 align-items-baseline">
+                                <div>
+                                    <a href="http://127.0.0.1:5500/#/quiz/odisha-special"> <p class="fw-bold h5 ng-binding">Odisha's Smallest</p> </a>
+                                </div>
+                                <div class="flex-grow-1 border_restaurant opacity-25"></div>
+                                <div>
+                                    <p class="ng-binding">2025-02-18</p>
+                                </div>
+                            </div>
+                            <div class="lc-block opacity-50">
+                                   <a href="http://127.0.0.1:5500/#/quiz/odisha-special/odisha-smallest-gk-quiz-mcq-set1"> <span class="ng-binding">15+ Odisha Smallest Wonders GK and Quiz | infoXodia - Odisha GK</span></a>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div><!-- end ngRepeat: post in ixoRecentPosts -->
+            </div>
+        </div>
+         
+         
+          
+        <!-- Recent post list end-->
+    </div>
+    <!-- continer body end  -->
+
+    <footer-bar><!-- footer -->
+<footer class="pt-lg-10 pt-5 footer bg-white">
+  <div class="container">
+    <div class="row border-top">
+      <div class="col-lg-4 col-md-6 col-12">
+        <!-- about company -->
+        <div class="mb-4">
+          <!-- need to place logo image here ..  -->
+          <!-- <img src="../../assets/svg/underline.svg" alt="" class="logo-inverse"> -->
+           <h3>INFOxODIA</h3>
+          <div class="mt-4">
+            <p>Jay Jagannath ! We are like a family, Join us and let explore our culture together</p>
+            <!-- social media -->
+            <div class="fs-5 mt-4">
+              <!--Facebook-->
+              <a href="https://www.youtube.com/@infoxodia" aria-label="Youtube" class="me-2">
+                <i class="bi bi-youtube"></i>
+              </a>
+              <!--Instagram Thread-->
+              <a href="https://www.instagram.com/infoxodia" aria-label="Instagram" class="me-2">
+                <i class="bi bi-instagram"></i>
+              </a>
+
+              <!--Instagram-->
+              <a href="https://www.threads.net/@infoxodia" aria-label="Thread" class="me-2">
+                <i class="bi bi-threads-fill"></i>
+              </a>
+
+              <!--Twitter X-->
+              <a href="https://x.com/InfoXodia" aria-label="Twitter/X" class="me-2">
+                <i class="bi bi-twitter-x"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="offset-lg-1 col-lg-2 col-md-3 col-6">
+        <div class="mb-4">
+          <!-- list -->
+          <h3 class="fw-bold mb-3">Company</h3>
+          <ul class="list-unstyled nav nav-footer flex-column nav-x-0">
+            <li><a href="http://127.0.0.1:5500/#/about" class="nav-link">About</a></li>
+            <!-- <li><a href="#" class="nav-link">Contact</a></li> -->
+            <!-- <li><a href="#" class="nav-link">Blog</a></li>
+            <li><a href="#" class="nav-link">Careers</a></li> -->
+            <li><a href="http://127.0.0.1:5500/#/contact" class="nav-link">Contact</a></li>
+            <li><a href="http://127.0.0.1:5500/#/ixo-faq" class="nav-link">FAQ’s</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-3 col-6">
+        <div class="mb-4">
+          <!-- list -->
+          <h3 class="fw-bold mb-3">Products</h3>
+          <ul class="list-unstyled nav nav-footer flex-column nav-x-0">
+            <!-- <li><a href="#" class="nav-link">Help and Support</a></li>
+            <li><a href="#" class="nav-link">Become Instructor</a></li> -->
+            <!-- <li><a href="#" class="nav-link">Get the app</a></li> -->
+            <li><a href="http://127.0.0.1:5500/#/quiz" class="nav-link">IXO QUIZ</a></li>
+            <!-- <li><a href="#" class="nav-link">Tutorial</a></li> -->
+          </ul>
+
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-12">
+        <!-- contact info -->
+        <div class="mb-4">
+          <h3 class="fw-bold mb-3">Get in touch</h3>
+          <p>Please mail us on below Mail id for support and conact</p>
+          <p class="mb-1">Email: <a href="mailto:infoxodia@gmail.com">infoxodia@gmail.com</a></p>
+          <!-- <p>Phone: <span class="text-dark fw-semibold">(000) 123 456 789</span></p> -->
+
+          <!-- playstore and app store link image  -->
+          <!-- <div class="d-flex">
+            <a href="#"><img src="../assets/images/svg/appstore.svg" alt="" class="img-fluid"></a>
+            <a href="#" class="ms-2"><img src="../assets/images/svg/playstore.svg" alt="" class="img-fluid"></a>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+    <div class="row align-items-center g-0 border-top py-2 mt-6">
+      <!-- Desc -->
+      <div class="col-md-10 col-8">
+        <div class="d-lg-flex align-items-center">
+          <div class="me-4">
+            <span>© <span id="copyright5">
+                <!-- <script>document.getElementById('copyright5').appendChild(document.createTextNode(new Date().getFullYear()))</script> -->
+                 2025
+              </span> infoXodia</span>
+          </div>
+          <div>
+            <nav class="nav nav-footer">
+              <a class="nav-link ps-0" href="http://127.0.0.1:5500/#/privacy-policy">Privacy Policy</a>
+              <a class="nav-link px-2 px-md-3" href="http://127.0.0.1:5500/#/disclaimer">Disclaimer</a>
+              <!-- <a class="nav-link d-none d-lg-block" href="#">Do Not Sell My Personal Information </a> -->
+              
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <!--Other Links Start -->
+      <div class="col-4  col-md-2 d-md-flex justify-content-end">
+        <div class="dropdown">
+          <a href="#" class="dropdown-toggle text-body" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fe fe-globe me-2 align-middle"></i>More
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li><a class="dropdown-item " href="http://127.0.0.1:5500/#/terms-condition"><span class="me-2">
+                </span>Terms and Conditions</a></li>
+            <!-- <li><a class="dropdown-item " href="#"><span class="me-2">
+                </span>Français</a></li>
+            <li>
+              <a class="dropdown-item " href="#"><span class="me-2">
+                </span>Deutsch</a>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+      <!-- Other links end  -->
+    </div>
+  </div>
+</footer></footer-bar>
+</div></div>
+
+</body>
+</html>
